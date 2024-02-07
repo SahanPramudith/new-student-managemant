@@ -1,6 +1,7 @@
 import {Button, Card, TextField} from "@mui/material";
 import {NavLink} from "react-router-dom";
 import {useState} from "react";
+import instence from "../../servises/axiosoder.jsx";
 
 export default function Login() {
 
@@ -9,6 +10,18 @@ export default function Login() {
 
 
     function login() {
+        instence.post('/login', {
+            password: password,
+            email: email,
+        })
+            .then(function (response) {
+                console.log(response.data.token);
+                localStorage.setItem('login',response.data.token)
+                window.location.reload()
+            })
+            .catch(function (error) {
+                console.log(error);
+            });
         console.log(password, email);
         clear();
     }
@@ -17,6 +30,10 @@ export default function Login() {
         setEmail('')
         setPassword('')
     }
+
+
+
+
 
     return (
         <div>

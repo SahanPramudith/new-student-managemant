@@ -20,6 +20,7 @@ import InboxIcon from '@mui/icons-material/MoveToInbox';
 import MailIcon from '@mui/icons-material/Mail';
 import {Navigate, NavLink, Route, Routes} from "react-router-dom";
 import routs from "../Navigation/routes.jsx";
+import {Button} from "@mui/material";
 
 const drawerWidth = 240;
 
@@ -106,6 +107,11 @@ export default function MiniDrawer() {
             )
         )
 
+    function logout() {
+        localStorage.removeItem('login')
+        window.location.reload()
+    }
+
     return (
         <Box sx={{ display: 'flex' }}>
             <CssBaseline />
@@ -122,10 +128,13 @@ export default function MiniDrawer() {
                         }}
                     >
                         <MenuIcon />
+
                     </IconButton>
                     <Typography variant="h6" noWrap component="div">
-                        Mini variant drawer
+                       Student management
                     </Typography>
+                    <Button  sx={{backgroundColor:'#ae2a2a', margin:1 ,left:700,}} onClick={() => logout()} variant="contained">LogOut</Button>
+
                 </Toolbar>
             </AppBar>
             <Drawer variant="permanent" open={open}>
@@ -173,7 +182,7 @@ export default function MiniDrawer() {
                 <Routes>
                     {getRouts(routs)}
 
-                    <Route path='*' element={<Navigate to={'/dashbord'}/> }/>
+                    <Route path='*' element={<Navigate to={'/addstudent'}/> }/>
                     {/*<Route path='/dashboard' element={<Dashbord/>}/>*/}
                     {/*<Route path={'/home'} element={<Home/>}/>*/}
                 </Routes>
