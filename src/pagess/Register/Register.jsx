@@ -14,7 +14,7 @@ export default function Register() {
     
     const register = () => {
         instence.post('/register', {
-            Name: name,
+            name: name,
             password:password,
             email:email
 
