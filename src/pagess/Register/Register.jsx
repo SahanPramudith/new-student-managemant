@@ -11,12 +11,12 @@ export default function Register() {
     const [password, setPassword] = useState('')
     const [email, setEmail] = useState('')
 
-    
+
     const register = () => {
         instence.post('/register', {
             name: name,
-            password:password,
-            email:email
+            password: password,
+            email: email
 
         })
             .then(function (response) {
@@ -25,9 +25,17 @@ export default function Register() {
             .catch(function (error) {
                 console.log(error);
             });
+        clear()
     }
-    
-    return(
+
+
+    const clear = () => {
+        setEmail('')
+        setName('')
+        setPassword('')
+    }
+
+    return (
         <div>
             <h1>Register</h1>
             <hr/>
@@ -40,12 +48,12 @@ export default function Register() {
                                fullWidth label="Name"
                                variant="filled"
                     /><TextField sx={{marginY: 2}}
-                               onChange={(val) => setPassword(val.target.value)}
-                               value={password}
-                               id="filled-basic"
-                               fullWidth label="Password"
-                               variant="filled"
-                    />
+                                 onChange={(val) => setPassword(val.target.value)}
+                                 value={password}
+                                 id="filled-basic"
+                                 fullWidth label="Password"
+                                 variant="filled"
+                />
                     <TextField sx={{marginY: 2}}
                                onChange={(val) => setEmail(val.target.value)}
                                value={email}
@@ -61,8 +69,6 @@ export default function Register() {
                     </NavLink>
                 </Card>
             </div>
-
-
 
 
         </div>
