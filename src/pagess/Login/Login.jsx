@@ -1,4 +1,4 @@
-import {Avatar, Button, Card, Grid, Paper, TextField} from "@mui/material";
+import {Avatar, Button, Card, Checkbox, FormControlLabel, Grid, Paper, TextField} from "@mui/material";
 import {NavLink} from "react-router-dom";
 import React, {useState} from "react";
 import instence from "../../servises/axiosoder.jsx";
@@ -20,7 +20,7 @@ export default function Login() {
         })
             .then(function (response) {
                 console.log(response.data.token);
-                localStorage.setItem('login',response.data.token)
+                localStorage.setItem('login', response.data.token)
                 window.location.reload()
             })
             .catch(function (error) {
@@ -36,9 +36,6 @@ export default function Login() {
     }
 
 
-
-
-
     return (
         <div>
             <h1>Login</h1>
@@ -46,8 +43,8 @@ export default function Login() {
             <div>
 
 
-                <Grid container component="main" sx={{ height: '100vh' }}>
-                    <CssBaseline />
+                <Grid container component="main" sx={{height: '100vh'}}>
+                    <CssBaseline/>
                     <Grid
                         item
                         xs={false}
@@ -73,33 +70,47 @@ export default function Login() {
                                 alignItems: 'center',
                             }}
                         >
-                            <Avatar sx={{ m: 1, bgcolor: 'secondary.main' }}>
-                                <LockOutlinedIcon />
+                            <Avatar sx={{m: 1, bgcolor: 'secondary.main'}}>
+                                <LockOutlinedIcon/>
                             </Avatar>
                             <Typography component='h1' variant='h5'>
                                 sing in
                             </Typography>
-                            <Box sx={{maxWidth: 345, padding: 2, justifyContent: 'center', textAlign: 'center', mt:1}}>
-                                <TextField sx={{marginY: 2}}
-                                           onChange={(val) => setPassword(val.target.value)}
-                                           value={password}
-                                           id="filled-basic"
-                                           fullWidth label="Password"
-                                           variant="filled"
-                                />
+                            <Box component='form'
+                                 sx={{maxWidth: 345, padding: 2, justifyContent: 'center', textAlign: 'center', mt: 1}}>
                                 <TextField sx={{marginY: 2}}
                                            onChange={(val) => setEmail(val.target.value)}
                                            value={email}
                                            id="filled-basic"
                                            fullWidth
-                                           label="Email"
-                                           variant="filled"
+                                           label="email"
+                                           variant="outlined"
+                                           required
+                                           autoFocus
                                 />
-                                <Button onClick={() => login()} variant="contained">Login</Button>
+                                <TextField sx={{marginY: 2}}
+                                           onChange={(val) => setPassword(val.target.value)}
+                                           value={password}
+                                           type={'password'}
+                                           id="filled-basic"
+                                           fullWidth
+                                           label="password"
+                                           variant="outlined"
+                                />
+                                <FormControlLabel
+                                    control={<Checkbox value="remember" color="primary" />}
+                                    label="Remember me"
+                                />
+                                <Button
+                                    fullWidth
+                                    onClick={() => login()}
+                                    variant="contained"
+                                    sx={{mt: 3, mb: 2}}
+                                >
+                                    Login
+                                </Button>
                                 <NavLink to={'/register'}>
-                                    <h6>
-                                        Register
-                                    </h6>
+                                    {"Don't have an account? Sign Up"}
                                 </NavLink>
                             </Box>
                         </Box>
