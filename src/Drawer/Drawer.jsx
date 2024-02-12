@@ -148,7 +148,7 @@ export default function MiniDrawer() {
                     {
                         routs.map((val,index)=>(
                             <NavLink to={val.path} style={{textDecoration:"none"}}>
-                                <ListItem key={'dashbord'} disablePadding sx={{ display: 'block' }}>
+                                <ListItem index={'dashbord'} disablePadding sx={{ display: 'block' }}>
                                     <ListItemButton
                                         sx={{
                                             minHeight: 48,

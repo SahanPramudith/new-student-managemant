@@ -6,7 +6,7 @@ import CssBaseline from "@mui/material/CssBaseline";
 import Box from "@mui/material/Box";
 import LockOutlinedIcon from '@mui/icons-material/LockOutlined';
 import Typography from "@mui/material/Typography";
-
+import loginimg from '../../assets/loginimg.png'
 export default function Login() {
 
     const [password, setPassword] = useState('');
@@ -37,9 +37,6 @@ export default function Login() {
 
 
     return (
-        <div>
-            <h1>Login</h1>
-            <hr/>
             <div>
 
 
@@ -52,7 +49,7 @@ export default function Login() {
                         md={7}
                         sx={{
 
-                            background: `url(${login})`,
+                            background: `url(${loginimg})`,
                             backgroundRepeat: 'no-repeat',
                             backgroundColor: (t) =>
                                 t.palette.mode === 'light' ? t.palette.grey[50] : t.palette.grey[900],
@@ -115,11 +112,7 @@ export default function Login() {
                             </Box>
                         </Box>
                     </Grid>
-
-
                 </Grid>
             </div>
-
-        </div>
     )
 }
