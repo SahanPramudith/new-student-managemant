@@ -1,8 +1,10 @@
 import Login from "../Login/Login.jsx";
 import {useEffect, useState} from "react";
 import instence from "../../servises/axiosoder.jsx";
-import {Button, Paper, Table, TableBody, TableCell, TableContainer, TableHead, TableRow} from "@mui/material";
+import {Button, Paper, Table, TableBody, TableCell, TableContainer, TableHead, TableRow, Tooltip} from "@mui/material";
 import DeleteIcon from '@mui/icons-material/Delete';
+import IconButton from "@mui/material/IconButton";
+import UpdateIcon from '@mui/icons-material/Update';
 
 
 export default function LoardStudent() {
@@ -85,13 +87,16 @@ export default function LoardStudent() {
                                 <TableCell align="left">{val.student_address}</TableCell>
                                 <TableCell align="left">{val.student_contact}</TableCell>
                                 <TableCell align="left">
-                                    <Button variant="outlined"  startIcon={<DeleteIcon fontSize="small" />}>
-                                        Delete
-                                    </Button>
-                                    <Button variant="outlined"  startIcon={<DeleteIcon fontSize="small" />}>
-                                        Delete
-                                    </Button>
-
+                                    <Tooltip title="Delete">
+                                        <IconButton aria-label="delete" size="small">
+                                            <DeleteIcon fontSize="inherit" />
+                                        </IconButton>
+                                    </Tooltip>
+                                    <Tooltip title="Update">
+                                        <IconButton aria-label="delete" size="small">
+                                            <UpdateIcon fontSize="inherit" />
+                                        </IconButton>
+                                    </Tooltip>
                                 </TableCell>
                             </TableRow>
                         ))}
