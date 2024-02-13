@@ -15,18 +15,19 @@ export default function Addstudent() {
             student_name: name,
             student_age: age,
             student_address: address,
-            student_contact: school,
+            student_contact: contact,
 
         })
             .then(function (response) {
                 console.log(response);
                 alert("Added Success..!")
-                clear()
+
             })
             .catch(function (error) {
                 console.log(error);
                 alert("Added Fail..!")
             });
+        clear()
     }
 
     const clear = () => {

@@ -1,7 +1,8 @@
 import Login from "../Login/Login.jsx";
 import {useEffect, useState} from "react";
 import instence from "../../servises/axiosoder.jsx";
-import {Paper, Table, TableBody, TableCell, TableContainer, TableHead, TableRow} from "@mui/material";
+import {Button, Paper, Table, TableBody, TableCell, TableContainer, TableHead, TableRow} from "@mui/material";
+import DeleteIcon from '@mui/icons-material/Delete';
 
 
 export default function LoardStudent() {
@@ -83,6 +84,17 @@ export default function LoardStudent() {
                                 <TableCell align="left">{val.student_age}</TableCell>
                                 <TableCell align="left">{val.student_address}</TableCell>
                                 <TableCell align="left">{val.student_contact}</TableCell>
+                                <TableCell align="left">
+                                    <Button variant="outlined"  startIcon={<DeleteIcon fontSize="small" />}>
+                                        Delete
+                                    </Button>
+                                    <Button variant="outlined"  startIcon={<DeleteIcon fontSize="small" />}>
+                                        Delete
+                                    </Button>
+                                    <Button variant="outlined"  startIcon={<DeleteIcon fontSize="small" />}>
+                                        Delete
+                                    </Button>
+                                </TableCell>
                             </TableRow>
                         ))}
                     </TableBody>
