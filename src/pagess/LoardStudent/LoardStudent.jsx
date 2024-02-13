@@ -91,9 +91,7 @@ export default function LoardStudent() {
                                     <Button variant="outlined"  startIcon={<DeleteIcon fontSize="small" />}>
                                         Delete
                                     </Button>
-                                    <Button variant="outlined"  startIcon={<DeleteIcon fontSize="small" />}>
-                                        Delete
-                                    </Button>
+
                                 </TableCell>
                             </TableRow>
                         ))}
