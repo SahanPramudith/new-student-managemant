@@ -5,11 +5,13 @@ import {Button, Paper, Table, TableBody, TableCell, TableContainer, TableHead, T
 import DeleteIcon from '@mui/icons-material/Delete';
 import IconButton from "@mui/material/IconButton";
 import UpdateIcon from '@mui/icons-material/Update';
+import {Navigate, NavLink} from "react-router-dom";
 
 
 export default function LoardStudent() {
 
     const [data, setData] = useState([])
+
 
     useEffect(() => {
         instence.get('/student/getAll')
@@ -80,22 +82,26 @@ export default function LoardStudent() {
                     <TableBody sx={{backgroundColor:'#bebaba'}}>
                         {data.map((val, index) => (
                             <TableRow
-                                key={index}
+                                key={val.id}
                             >
                                 <TableCell  align="left">{val.student_name}</TableCell>
                                 <TableCell align="left">{val.student_age}</TableCell>
                                 <TableCell align="left">{val.student_address}</TableCell>
                                 <TableCell align="left">{val.student_contact}</TableCell>
+                                <TableCell align="left">{val.id}</TableCell>
                                 <TableCell align="left">
                                     <Tooltip title="Delete">
                                         <IconButton aria-label="delete" size="small">
+                                            {/*{onclick((val)=>delet(val.id))}*/}
                                             <DeleteIcon fontSize="inherit" />
                                         </IconButton>
                                     </Tooltip>
                                     <Tooltip title="Update">
-                                        <IconButton aria-label="delete" size="small">
-                                            <UpdateIcon fontSize="inherit" />
-                                        </IconButton>
+                                        <NavLink to={`/updatestudent/${val.id}`}>
+                                            <IconButton aria-label="delete" size="small">
+                                                <UpdateIcon fontSize="inherit" />
+                                            </IconButton>
+                                        </NavLink>
                                     </Tooltip>
                                 </TableCell>
                             </TableRow>
