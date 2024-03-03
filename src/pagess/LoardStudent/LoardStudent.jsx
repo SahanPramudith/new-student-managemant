@@ -9,6 +9,9 @@ import LoadingIcons from 'react-loading-icons'
 import { Bars } from 'react-loading-icons'
 import { Navigate, NavLink } from "react-router-dom";
 import { CirclesWithBar } from 'react-loader-spinner'
+import { Delete } from "@mui/icons-material";
+import Stack from '@mui/material/Stack';
+import CircularProgress from '@mui/material/CircularProgress';
 
 
 
@@ -37,24 +40,40 @@ export default function LoardStudent() {
             });
     }, []);
 
+
+    function deletestu(id) {
+        const confirm = window.confirm("would you like delete student ? ")
+        if (confirm) {
+            instence.delete('student/delete/'+id)
+            .then(function (response) {
+                // handle success
+                console.log(response);
+                window.location.reload()
+
+            })
+            .catch(function (error) {
+                // handle error
+                console.log(error);
+            })
+            .finally(function () {
+                // always executed
+            });
+        }
+        
+    }
+
+
+
+
     return (
         <div>
             <h1>Loard student</h1>
             {
                 loder ?
                     <div sx={{marginleft:100}}>
-                        <CirclesWithBar
-
-                            height="250"
-                            width="250"
-                            color="#0000"
-                            outerCircleColor="#4fa94d"
-                            innerCircleColor="#4fa94d"
-                            barColor="#4fa94d"
-                            ariaLabel="circles-with-bar-loading"
-                            wrapperStyle={{}}
-                            wrapperClass=""
-                            visible={true}
+                        <h1>Loding....!</h1>
+                        <CircularProgress color="inherit" style={{justifyContent:'center'}}
+                        
                         />
 
 
@@ -129,14 +148,18 @@ export default function LoardStudent() {
                                         <TableCell align="left">{val.student_contact}</TableCell>
                                         <TableCell align="left">
                                             <Tooltip title="Delete">
-                                                <IconButton aria-label="delete" size="small">
-                                                    {/*{onclick((val)=>delet(val.id))}*/}
+                                                <IconButton aria-label="delete" size="small"
+                                                
+                                                onClick={()=>deletestu(val.id)}
+                                                >
+                                                    {/* {onclick((val)=>alert(val.id))}
+                                                    onclick={(val) => setName(val.target.value)} */}
                                                     <DeleteIcon fontSize="inherit" />
                                                 </IconButton>
                                             </Tooltip>
                                             <Tooltip title="Update">
                                                 <NavLink to={`/updatestudent/${val.id}`}>
-                                                    <IconButton aria-label="delete" size="small">
+                                                    <IconButton aria-label="update" size="small">
                                                         <UpdateIcon fontSize="inherit" />
                                                     </IconButton>
                                                 </NavLink>

@@ -167,7 +167,7 @@ export default function MiniDrawer() {
                                                 justifyContent: 'center',
                                             }}
                                         >
-                                            <MailIcon />
+                                           {val.icon}
                                         </ListItemIcon>
                                         <ListItemText primary={val.name} sx={{ opacity: open ? 1 : 0 }} />
                                     </ListItemButton>

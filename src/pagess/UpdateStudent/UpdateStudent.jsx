@@ -13,9 +13,6 @@ export default function UpdateStudent() {
     let { id } = useParams();
 
 
-
-    u
-
     function update() {
         // {
         instence.put('student/update/'+id, {
