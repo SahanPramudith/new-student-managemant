@@ -18,9 +18,11 @@ import ListItemIcon from '@mui/material/ListItemIcon';
 import ListItemText from '@mui/material/ListItemText';
 import InboxIcon from '@mui/icons-material/MoveToInbox';
 import MailIcon from '@mui/icons-material/Mail';
-import {Navigate, NavLink, Route, Routes} from "react-router-dom";
+import { Navigate, NavLink, Route, Routes } from "react-router-dom";
 import routs from "../Navigation/routes.jsx";
-import {Button} from "@mui/material";
+import { Button } from "@mui/material";
+import LogoutIcon from '@mui/icons-material/Logout';
+
 
 const drawerWidth = 240;
 
@@ -102,9 +104,9 @@ export default function MiniDrawer() {
     };
 
     const getRouts = (rout) =>
-        rout.map((val,index)=>(
-                <Route path={val.path} element={val.component}/>
-            )
+        rout.map((val, index) => (
+            <Route path={val.path} element={val.component} />
+        )
         )
 
     function logout() {
@@ -131,9 +133,11 @@ export default function MiniDrawer() {
 
                     </IconButton>
                     <Typography variant="h6" noWrap component="div">
-                       Student management
+                        Student management
                     </Typography>
-                    <Button  sx={{backgroundColor:'#ae2a2a', margin:1 ,left:700,}} onClick={() => logout()} variant="contained">LogOut</Button>
+                    <Button variant="contained" onClick={()=>logout()} startIcon={<LogoutIcon />} sx={{backgroundColor:'#ae2a2a', margin:1 ,left:700,}}>
+                        LogOut
+                    </Button>
 
                 </Toolbar>
             </AppBar>
@@ -146,8 +150,8 @@ export default function MiniDrawer() {
                 <Divider />
                 <List>
                     {
-                        routs.map((val,index)=>(
-                            <NavLink to={val.path} style={{textDecoration:"none"}}>
+                        routs.map((val, index) => (
+                            <NavLink to={val.path} style={{ textDecoration: "none" }}>
                                 <ListItem index={'dashbord'} disablePadding sx={{ display: 'block' }}>
                                     <ListItemButton
                                         sx={{
@@ -182,7 +186,7 @@ export default function MiniDrawer() {
                 <Routes>
                     {getRouts(routs)}
 
-                    <Route path='*' element={<Navigate to={'/addstudent'}/> }/>
+                    <Route path='*' element={<Navigate to={'/loardstudent'} />} />
                     {/*<Route path='/dashboard' element={<Dashbord/>}/>*/}
                     {/*<Route path={'/home'} element={<Home/>}/>*/}
                 </Routes>

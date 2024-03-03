@@ -21,6 +21,7 @@ export default function Addstudent() {
             .then(function (response) {
                 console.log(response);
                 alert("Added Success..!")
+                window.location.reload()
 
             })
             .catch(function (error) {
